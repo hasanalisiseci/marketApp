@@ -42,9 +42,7 @@ class FirebaseManager {
         }
     }
 
-    public func logFilmDetails(title: String, detail: String) {
-        Analytics.logEvent("id_\(title.replacingOccurrences(of: " ", with: "_"))", parameters: [
-            "detail": detail,
-        ])
+    public func logProductDetail(title: String, discount: String) {
+        Analytics.logEvent("\(title.replacingOccurrences(of: " ", with: "_"))", parameters: ["discount": discount])
     }
 }

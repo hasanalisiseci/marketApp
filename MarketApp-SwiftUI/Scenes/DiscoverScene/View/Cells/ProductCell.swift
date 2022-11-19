@@ -47,7 +47,7 @@ struct ProductCell: View {
                 .frame(width: cellWidth - 30, height: cellHeight * 0.5)
                 .scaledToFit()
                 .cornerRadius(3)
-            Text(product.listDescription).lineLimit(2)
+            Text(product.listDescription).lineLimit(2).multilineTextAlignment(.leading)
             VStack(alignment: .leading, spacing: 0) {
                 if product.price != nil {
                     Text("\(product.price!.value.toString)\(product.price!.currency)")

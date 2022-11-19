@@ -16,5 +16,9 @@ struct Constants {
     static let loginInfoEmpty = "login_info_empty".localized()
     static let invalidMailAlertMessage = "invalid_mail".localized()
     static let home = "home".localized()
-
+    static let favorites = "favorites".localized()
+    static let cart = "cart".localized()
+    static let tags = "tags".localized()
+    static let settings = "settings".localized()
+    static let logWithFirebase = "log_with_firebase".localized()
 }

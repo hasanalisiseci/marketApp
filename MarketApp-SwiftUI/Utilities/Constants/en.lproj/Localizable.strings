@@ -14,3 +14,8 @@
 "login_info_empty" = "Please fill in your login information completely.";
 "invalid_mail" = "Please enter a valid email address!";
 "home" = "Home";
+"favorites" = "Favorites";
+"cart" = "Cart";
+"tags" = "Tags";
+"settings" = "Settings";
+"log_with_firebase" = "The product is logged with Firebase Analytics!";

@@ -8,48 +8,48 @@
 import SwiftUI
 
 struct TabbarView: View {
-    var letters: String
-    @State var selection = 0
     @ObservedObject var discoverViewModel = DiscoverViewModel()
+    @State var selection = 0
+    var letters: String
 
     var body: some View {
         TabView(selection: $selection) {
             DiscoverView(discoverViewModel: discoverViewModel, letters: letters)
                 .tabItem {
                     selection == 0 ? Image(systemName: "bag") : Image(systemName: "bag.fill")
-                    Text("Home")
+                    Text(Constants.home)
                 }
                 .tag(0)
 
-            Text("Favorites")
+            Text(Constants.favorites)
                 .navigationTitle("")
                 .tabItem {
                     selection == 1 ? Image(systemName: "star") : Image(systemName: "star.fill")
-                    Text("Favorites")
+                    Text(Constants.favorites)
                 }
                 .tag(1)
 
-            Text("Cart")
+            Text(Constants.cart)
                 .navigationTitle("")
                 .tabItem {
                     selection == 2 ? Image(systemName: "cart") : Image(systemName: "cart.fill")
-                    Text("Cart")
+                    Text(Constants.cart)
                 }
                 .tag(2)
 
-            Text("Tags")
+            Text(Constants.tags)
                 .navigationTitle("")
                 .tabItem {
                     selection == 3 ? Image(systemName: "tag") : Image(systemName: "tag.fill")
-                    Text("Tags")
+                    Text(Constants.tags)
                 }
                 .tag(3)
 
-            Text("Settings")
+            Text(Constants.settings)
                 .navigationTitle("")
                 .tabItem {
                     selection == 4 ? Image(systemName: "person") : Image(systemName: "person.fill")
-                    Text("Settings")
+                    Text(Constants.settings)
                 }
                 .tag(4)
         }

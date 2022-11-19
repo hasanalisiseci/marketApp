@@ -14,3 +14,8 @@
 "login_info_empty" = "Lütfen giriş bilgilerinizi tam doldurunuz.";
 "invalid_mail" = "Lütfen geçerli bir mail adresi giriniz!";
 "home" = "Anasayfa";
+"favorites" = "Favoriler";
+"cart" = "Sepet";
+"tags" = "Etiketler";
+"settings" = "Ayarlar";
+"log_with_firebase" = "Ürün, Firebase Analytcs ile loglandı!";

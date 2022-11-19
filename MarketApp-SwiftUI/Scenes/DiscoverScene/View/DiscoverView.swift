@@ -9,11 +9,8 @@ import SwiftUI
 
 struct DiscoverView: View {
     @StateObject var discoverViewModel: DiscoverViewModel
+    @State var showingAlert = false
 
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-    ]
     var letters: String
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -21,8 +18,12 @@ struct DiscoverView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
                         ForEach(discoverViewModel.firstTypeProductList, id: \.self) { item in
-                            ProductCell(product: item, productType: .first)
-
+                            Button {
+                                FirebaseManager.shared.logProductDetail(title: "\(item.listDescription.prefix(15))", discount: item.discount)
+                                showingAlert.toggle()
+                            } label: {
+                                ProductCell(product: item, productType: .first)
+                            }
                         }.redacted(reason: discoverViewModel.isLoading ? .placeholder : [])
                     }.padding(.horizontal)
                 }
@@ -30,19 +31,32 @@ struct DiscoverView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
                         ForEach(discoverViewModel.secondTypeProductList, id: \.self) { item in
-                            ProductCell(product: item, productType: .second)
-
+                            Button {
+                                FirebaseManager.shared.logProductDetail(title: "\(item.listDescription.prefix(15))", discount: item.discount)
+                                showingAlert.toggle()
+                            } label: {
+                                ProductCell(product: item, productType: .second)
+                            }
                         }.redacted(reason: discoverViewModel.isLoading ? .placeholder : [])
                     }.padding(.horizontal)
                 }
-                LazyVGrid(columns: columns, spacing: 20) {
+                LazyVGrid(columns: StaticColumns.adaptiveColumns, spacing: 20) {
                     ForEach(discoverViewModel.thirthTypeProductList, id: \.self) { item in
-                        ProductCell(product: item, productType: .thirth)
 
+                        Button {
+                            FirebaseManager.shared.logProductDetail(title: "\(item.listDescription.prefix(15))", discount: item.discount)
+                            showingAlert.toggle()
+                        } label: {
+                            
+                                ProductCell(product: item, productType: .thirth)
+                                                   }
                     }.redacted(reason: discoverViewModel.isLoading ? .placeholder : [])
                 }
                 .padding(.horizontal)
             }
+        }
+        .alert(Constants.logWithFirebase, isPresented: $showingAlert) {
+            Button("OK", role: .cancel) { }
         }.refreshable {
             discoverViewModel.refreshPage()
         }

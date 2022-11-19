@@ -68,7 +68,6 @@ struct LoginView: View {
         .onTapGesture {
             UIApplication.shared.endEditing()
         }
-
         .alert(loginViewModel.alertMessage, isPresented: $loginViewModel.showingAlert) {
             Button("OK", role: .cancel) { }
         }
