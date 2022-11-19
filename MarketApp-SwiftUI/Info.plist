@@ -4,5 +4,10 @@
 <dict>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>Turkish</string>
+		<string>en</string>
+	</array>
 </dict>
 </plist>

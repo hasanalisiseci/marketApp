@@ -47,9 +47,8 @@ struct DiscoverView: View {
                             FirebaseManager.shared.logProductDetail(title: "\(item.listDescription.prefix(15))", discount: item.discount)
                             showingAlert.toggle()
                         } label: {
-                            
-                                ProductCell(product: item, productType: .thirth)
-                                                   }
+                            ProductCell(product: item, productType: .thirth)
+                        }
                     }.redacted(reason: discoverViewModel.isLoading ? .placeholder : [])
                 }
                 .padding(.horizontal)

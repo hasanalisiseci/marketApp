@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  MarketApp-SwiftUI
+/*
+   Localizable.strings
+   MarketApp-SwiftUI
 
-  Created by Hasan Ali Şişeci on 19.11.2022.
-  
-*/
+   Created by Hasan Ali Şişeci on 20.11.2022.
+
+ */
 
 "app_title" = "DefineX\nCase Study EN";
 "mail_address" = "E-mail address";
