@@ -1,0 +1,16 @@
+/*
+   Localizable.strings
+   MarketApp-SwiftUI
+
+   Created by Hasan Ali Şişeci on 19.11.2022.
+
+ */
+
+"app_title" = "DefineX\nCase Study TR";
+"mail_address" = "E-mail adresi";
+"password" = "Şifre";
+"login_text" = "GİRİŞ YAP";
+"forgot_pass" = "ŞİFREMİ UNUTTUM";
+"login_info_empty" = "Lütfen giriş bilgilerinizi tam doldurunuz.";
+"invalid_mail" = "Lütfen geçerli bir mail adresi giriniz!";
+"home" = "Anasayfa";
