@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-class DiscoverViewModel: NSObject, ObservableObject {
-    @Published var firstTypeProductStatus: ProductStatus = .none
-    @Published var secondTypeProductStatus: ProductStatus = .none
-    @Published var thirthTypeProductStatus: ProductStatus = .none
 
+
+class DiscoverViewModel: NSObject, DiscoverViewModelProtocol {
     @Published var firstTypeProductList: [Product] = []
     @Published var secondTypeProductList: [Product] = []
     @Published var thirthTypeProductList: [Product] = []
@@ -41,7 +39,7 @@ class DiscoverViewModel: NSObject, ObservableObject {
             self.isLoading = false
         }
     }
-
+    
     func fetchProducts(productType: ProductType) {
         let type: RequestType
         switch productType {
@@ -57,24 +55,13 @@ class DiscoverViewModel: NSObject, ObservableObject {
             case let .success(success):
                 switch productType {
                 case .first:
-                    self?.firstTypeProductStatus = .success
                     self?.firstTypeProductList = success.list
                 case .second:
-                    self?.secondTypeProductStatus = .success
                     self?.secondTypeProductList = success.list
                 case .thirth:
-                    self?.thirthTypeProductStatus = .success
                     self?.thirthTypeProductList = success.list
                 }
             case let .failure(failure):
-                switch productType {
-                case .first:
-                    self?.firstTypeProductStatus = .fail
-                case .second:
-                    self?.secondTypeProductStatus = .fail
-                case .thirth:
-                    self?.thirthTypeProductStatus = .fail
-                }
                 print("\(type.endPoint)", failure.message)
                 self?.alertMessage = failure.message
             }
@@ -82,9 +69,3 @@ class DiscoverViewModel: NSObject, ObservableObject {
     }
 }
 
-enum ProductStatus {
-    case none
-    case loading
-    case success
-    case fail
-}
