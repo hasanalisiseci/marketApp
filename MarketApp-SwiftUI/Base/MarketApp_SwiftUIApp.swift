@@ -21,8 +21,7 @@ struct MarketApp_SwiftUIApp: App {
                     case .splash:
                         SplashScene(title: splahTitle)
                     case .login:
-                        TabbarView(letters: "HA")
-                        //LoginView()
+                        LoginView()
                     }
                 }.onAppear {
                     fetchSplashTitle()

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginTitleView: View {
     var body: some View {
-        Text(Constants.app_title)
+        Text("MarketApp")
             .foregroundLinearGradient(
                 colors: [.blue,
                          .blue.opacity(0.9),
