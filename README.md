@@ -26,8 +26,7 @@ Clone the project
 ```bash
   git clone https://github.com/hasanalisiseci/marketApp.git
 ```
-
-Open in Xcode and run.
+Open in Xcode and "File" -> "Packages" -> "Reset Package Caches" and "run".
 
 ### Desired features of the project
 
