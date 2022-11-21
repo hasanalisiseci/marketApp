@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 class DiscoverViewModel: NSObject, DiscoverViewModelProtocol {
     @Published var firstTypeProductList: [Product] = []
     @Published var secondTypeProductList: [Product] = []
@@ -30,6 +28,7 @@ class DiscoverViewModel: NSObject, DiscoverViewModelProtocol {
         }
     }
 
+    /// Pull to refresh funciton
     func refreshPage() {
         isLoading = true
         fetchProducts(productType: .first)
@@ -39,7 +38,9 @@ class DiscoverViewModel: NSObject, DiscoverViewModelProtocol {
             self.isLoading = false
         }
     }
-    
+
+    /// Our function that reaches the function that fetch the products over the service
+    /// - Parameter productType: We provide the page configuration by selecting the product type.
     func fetchProducts(productType: ProductType) {
         let type: RequestType
         switch productType {
@@ -68,4 +69,3 @@ class DiscoverViewModel: NSObject, DiscoverViewModelProtocol {
         }
     }
 }
-

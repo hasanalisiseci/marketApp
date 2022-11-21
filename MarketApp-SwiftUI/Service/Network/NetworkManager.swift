@@ -13,35 +13,35 @@ class NetworkManager {
 
     private init() {}
 
+    /// The request process that will enable us to connect with the service for login processes.
+    /// - Parameters:
+    ///   - type: We choose the endpoint type for the operation to be done.
+    ///   - email: The e-mail we received from the user on the login screen
+    ///   - password: The password we received from the user on the login screen
+    ///   - completion: The function we will call when the function is complete
     func loginRequest(with type: RequestType, email: String, password: String, completion: @escaping (Result<[String: Any], CustomError>) -> Void) {
-        // declare parameter as a dictionary which contains string as key and value combination.
         let parameters = ["email": email, "password": password]
 
-        // create the url with NSURL
         guard let url = URL(string: type.endPoint) else {
             completion(.failure(.urlError))
             return
         }
 
-        // create the session object
         let session = URLSession.shared
 
-        // now create the Request object using the url object
         var request = URLRequest(url: url)
         request.httpMethod = type.httpMethod.rawValue // set http method as POST
 
         do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: ["email": email, "password": password], options: .prettyPrinted) // pass dictionary to data object and set it as request body
+            request.httpBody = try JSONSerialization.data(withJSONObject: ["email": email, "password": password], options: .prettyPrinted)
         } catch let error {
             print(error.localizedDescription)
             completion(.failure(.dataError))
         }
 
-        // HTTP Headers
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
 
-        // create dataTask using the session object to send data to the server
         let task = session.dataTask(with: request, completionHandler: { data, _, error in
 
             guard error == nil else {
@@ -55,7 +55,6 @@ class NetworkManager {
             }
 
             do {
-                // create json object from data
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
                     completion(.failure(.invalidTypeJsonError))
                     return
@@ -70,6 +69,10 @@ class NetworkManager {
         task.resume()
     }
 
+    /// The function we use to call our products on the homepage from the service
+    /// - Parameters:
+    ///   - type: We choose an endpoint according to our product type on the homepage.
+    ///   - completion: The function we will call when the function is complete
     func fetchProducts<T: Decodable>(with type: RequestType, completion: @escaping (Result<T, CustomError>) -> Void) {
         guard let url = URL(string: type.endPoint) else {
             completion(.failure(.urlError))
