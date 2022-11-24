@@ -34,7 +34,6 @@ Open in Xcode and "File" -> "Packages" -> "Reset Package Caches" and "run".
 
         - The project will be written on the basis of an MVVM.
         - The code was designed in accordance with localization.
-        - The project will be written on the basis of an Android Architecture MVVM, Viper etc.
         - The use and integration of the Firebase library is required.
         - SOLID principles must be adhered to.
 
